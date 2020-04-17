@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/spassvogel/warehousemap/precache-manifest.53cc4401475d0dc86ce7458f60e811f5.js"
+  "/spassvogel/warehousemap/precache-manifest.521fe6b40afbede766dffcd54e264c1a.js"
 );
 
 self.addEventListener('message', (event) => {
