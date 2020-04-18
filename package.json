@@ -12,9 +12,11 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "gsap": "^3.2.6",
     "pixi-viewport": "^4.10.0",
     "pixi.js": "^5.2.1",
     "react": "^16.13.1",
+    "react-animated-modal": "^1.1.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
