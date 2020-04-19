@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Sprite } from '@inlet/react-pixi';
+import { Sprite, useApp } from '@inlet/react-pixi';
 import * as PIXI from 'pixi.js';
 import { PixiPlugin } from 'gsap/all';
 import { gsap } from 'gsap'
@@ -14,19 +14,20 @@ interface Props {
 
 const Marker = (props: Props & React.ComponentProps<typeof Sprite>) => {
     const ref = useRef<PIXI.Sprite>(null);
+    const app = useApp();
     const data = useRef<PIXI.interaction.InteractionData>();
     const [position, setPosition] = useState<PIXI.Point>(props.position || new PIXI.Point());
 
     useEffect(() => {
         // Pop in animation!
         gsap.from(ref.current, { 
-            duration: 1,
-            ease: "elastic.out(2, 0.5)",
-            pixi: { 
-              visible: false,
-              scale: .1, 
-            }
-          }).delay(props.delay || 0);
+          duration: 1,
+          ease: "elastic.out(2, 0.5)",
+          pixi: { 
+            visible: false,
+            scale: .1, 
+          }
+        }).delay(props.delay || 0);
     }, [props.delay]);
 
     const onDragStart = (event: PIXI.interaction.InteractionEvent) => {
@@ -51,12 +52,9 @@ const Marker = (props: Props & React.ComponentProps<typeof Sprite>) => {
         }
     }
     
-
     return (
         <Sprite 
             { ...props }
-            // visible={false}
-            scale={[0.5, 0.5]}
             anchor={[0.5, 0.5]}
             position={position}
             ref={ref}

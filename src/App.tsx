@@ -50,7 +50,7 @@ function App() {
 
         <Marker position={new PIXI.Point(440, 449)} pointerdown={() => selectSituation('fire')} delay={.5} />
         <Marker position={new PIXI.Point(986, 724)} pointerdown={() => selectSituation('theft')} delay={1} />
-        <Marker position={new PIXI.Point(1437, 411)} pointerdown={() => selectSituation('absenteism')} delay={1.5} />
+        <Marker position={new PIXI.Point(1437, 447)} pointerdown={() => selectSituation('absenteism')} delay={1.5} />
     </Viewport> 
   </Stage>
   );
