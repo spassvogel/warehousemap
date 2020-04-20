@@ -74,6 +74,19 @@
   animation: draw-around 1s;
 }
 
+.modal-content .control {  
+  display: flex;
+}
+
+.modal-content .control .warning {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-content .control .warning span {
+}
+
 @keyframes draw-around {
   0% {
     stroke-dashoffset: 640;
