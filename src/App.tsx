@@ -7,6 +7,8 @@ import Marker from './components/pixi/Marker';
 import { PixiPlugin } from 'gsap/all';
 import { gsap } from 'gsap'
 import SituationModal from './components/SituationModal';
+import ScenarioOrder from './components/ScenarioOrder';
+
 import './App.css';
 
 PixiPlugin.registerPIXI(PIXI);
@@ -19,11 +21,11 @@ if (process.env.NODE_ENV === "development") {
 
 function App() {
   const viewportRef = useRef<PixiViewport>(null);
-  const [situationSelected, selectSituation] = useState<string | null>(null);
+  const [selectedSituation, selectSituation] = useState<string | null>(null);
+  const [scenarioOrder, setScenarioOrder] = useState<string[]>([]);
 
   const worldWidth = 1920;
   const worldHeight = 1278;
-  
   
   const [canvasWidth, setCanvasWidth] = useState(1200);
   const [canvasHeight, setCanvasHeight] = useState(600);
@@ -39,9 +41,10 @@ function App() {
     return () => {
         window.removeEventListener("resize", resize);
     };
-}, []);
+  }, []);
 
   useEffect(() => {
+    // Center the map
     if (viewportRef.current) {
       const viewport = viewportRef.current;
       viewport.moveCenter(worldWidth / 2, worldHeight / 2);  
@@ -50,12 +53,12 @@ function App() {
 
   useEffect(() => {
     // Blur the map when situation is selected
-    if (situationSelected) {
+    if (selectedSituation) {
       gsap.to(viewportRef.current, {duration: .5, pixi: {blur:20}});
     } else {
       gsap.to(viewportRef.current, {duration: .5, pixi: {blur:0}});
     }
-  }, [situationSelected]);
+  }, [selectedSituation]);
 
   const handleMarkerClick = (situation: string) => {
     selectSituation(situation);
@@ -66,8 +69,12 @@ function App() {
   }
 
   const handleChooseOption = (option: number) => {
-    console.log(option);
+    setScenarioOrder([
+      ...scenarioOrder,
+      selectedSituation!
+    ])
   }
+  console.log(scenarioOrder)
 
   return (
     <>
@@ -80,7 +87,8 @@ function App() {
           <Marker position={new PIXI.Point(1437, 447)} pointerdown={() => handleMarkerClick('absenteeism')} delay={1.5} />
       </Viewport>
     </Stage>
-    { situationSelected && <SituationModal situationId={situationSelected} onClose={handleClose} onOptionChosen={handleChooseOption} /> }
+    <ScenarioOrder scenarioOrder={scenarioOrder} />
+    { selectedSituation && <SituationModal situationId={selectedSituation} onClose={handleClose} onOptionChosen={handleChooseOption} /> }
     </>  
   )
 };

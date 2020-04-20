@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import Situations from './../content/situations.json';
+import { ISituations } from '../common/constants';
 import { ReactComponent as CheckSvg } from './../images/ui/check.svg';
+import './situationModal.css';
 
 interface Props {
   situationId: string;
@@ -12,7 +14,7 @@ interface Props {
 const SituationModal = (props: Props) => {
   const { situationId, onClose, onOptionChosen } = props;
 
-  const situation = (Situations as Situations)[situationId];
+  const situation = (Situations as ISituations)[situationId];
   const [selectedOption, selectOption] = useState<number | null>();
   const [warningShown, setWarningShown] = useState<boolean>(false);
 
@@ -81,12 +83,3 @@ const SituationModal = (props: Props) => {
 
 export default SituationModal;
 
-interface Situations {
-  [name: string]: Situation
-}
-
-interface Situation {
-  header: string;
-  description: string;
-  options: string[];
-}
