@@ -39,9 +39,6 @@ const PixiComponentViewport = PixiComponent("Viewport", {
       interaction: props.app.renderer.plugins.interaction,
       // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
     });
-    viewport.on("clicked", (event) => { if(props.onClick) props.onClick(event) });
-    //viewport.on("drag-start", () => console.log("drag-start"));
-    //viewport.on("drag-end", () => console.log("drag-end"));
 
     viewport
       .drag()
@@ -53,14 +50,5 @@ const PixiComponentViewport = PixiComponent("Viewport", {
 
     return viewport;
   },
-  // applyProps: (instance, oldProps, newProps) => {
-  //   console.log("applyProps");
-  // },
-  // didMount: () => {
-  //   console.log("didMount");
-  // },
-  // willUnmount: () => {
-  //   console.log("willUnmount");
-  // }
 });
 export default Viewport;

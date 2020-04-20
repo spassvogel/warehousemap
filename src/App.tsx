@@ -74,7 +74,6 @@ function App() {
       selectedSituation!
     ])
   }
-  console.log(situationOrder)
 
   const renderMarker = (situation: string, position: PIXI.Point, delay: number) => {
     if (situationOrder.some(s => s === situation)) {

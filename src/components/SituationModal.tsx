@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Situations from './../content/situations.json';
 import { ISituations } from '../common/constants';
@@ -57,13 +57,16 @@ const SituationModal = (props: Props) => {
           <div className="control">
             { !warningShown && (
               <button disabled={selectedOption === null} onClick={() => setWarningShown(true)}>
-                <h2>Okay</h2>
+                <b>Okay</b>
               </button>
             )}
             { warningShown && (
               <>
                 <button disabled={selectedOption === null} onClick={() => handleConfirm()}>
-                  <h2>I'm sure</h2>
+                  <b>I'm sure</b>
+                </button>
+                <button disabled={selectedOption === null} onClick={() => handleClose()}>
+                  Never mind
                 </button>
                 <div className="warning">
                   {selectedOption !== null && (
