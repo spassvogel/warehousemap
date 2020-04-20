@@ -7,7 +7,7 @@ import Marker from './components/pixi/Marker';
 import { PixiPlugin } from 'gsap/all';
 import { gsap } from 'gsap'
 import SituationModal from './components/SituationModal';
-import ScenarioOrder from './components/ScenarioOrder';
+import SituationOrder from './components/SituationOrder';
 
 import './App.css';
 
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
 function App() {
   const viewportRef = useRef<PixiViewport>(null);
   const [selectedSituation, selectSituation] = useState<string | null>(null);
-  const [scenarioOrder, setScenarioOrder] = useState<string[]>([]);
+  const [situationOrder, setsituationOrder] = useState<string[]>([]);
 
   const worldWidth = 1920;
   const worldHeight = 1278;
@@ -69,12 +69,12 @@ function App() {
   }
 
   const handleChooseOption = (option: number) => {
-    setScenarioOrder([
-      ...scenarioOrder,
+    setsituationOrder([
+      ...situationOrder,
       selectedSituation!
     ])
   }
-  console.log(scenarioOrder)
+  console.log(situationOrder)
 
   return (
     <>
@@ -87,7 +87,7 @@ function App() {
           <Marker position={new PIXI.Point(1437, 447)} pointerdown={() => handleMarkerClick('absenteeism')} delay={1.5} />
       </Viewport>
     </Stage>
-    <ScenarioOrder scenarioOrder={scenarioOrder} />
+    <situationOrder situationOrder={situationOrder} />
     { selectedSituation && <SituationModal situationId={selectedSituation} onClose={handleClose} onOptionChosen={handleChooseOption} /> }
     </>  
   )

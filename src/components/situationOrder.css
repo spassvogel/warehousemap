@@ -1,4 +1,4 @@
-.scenario-order {
+.situation-order {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -7,6 +7,6 @@
   border-radius: 8px;
 }
 
-.scenario-order ol {
+.situation-order ol {
   padding-left: 24px;
 }
