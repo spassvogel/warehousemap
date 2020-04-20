@@ -76,18 +76,24 @@ function App() {
   }
   console.log(situationOrder)
 
+  const renderMarker = (situation: string, position: PIXI.Point, delay: number) => {
+    if (situationOrder.some(s => s === situation)) {
+      return null;
+    }
+    return <Marker position={position} pointerdown={() => handleMarkerClick(situation)} delay={delay} />
+  }
+
   return (
     <>
       <Stage width={canvasWidth} height={canvasHeight} >
         <Viewport screenWidth={canvasWidth} screenHeight={canvasHeight} worldWidth={worldWidth} worldHeight={worldHeight} ref={viewportRef} >
           <Sprite image={`${process.env.PUBLIC_URL}/map.png`}  interactive={true}/>
-
-          <Marker position={new PIXI.Point(440, 449)} pointerdown={() => handleMarkerClick('fire')} delay={.5} />
-          <Marker position={new PIXI.Point(986, 724)} pointerdown={() => handleMarkerClick('theft')} delay={1} />
-          <Marker position={new PIXI.Point(1437, 447)} pointerdown={() => handleMarkerClick('absenteeism')} delay={1.5} />
+          {renderMarker('fire', new PIXI.Point(440, 449), 0.5)}
+          {renderMarker('theft', new PIXI.Point(986, 724), 1)}
+          {renderMarker('absenteeism', new PIXI.Point(1437, 447), 1.5)}
       </Viewport>
     </Stage>
-    <situationOrder situationOrder={situationOrder} />
+    <SituationOrder situationOrder={situationOrder} />
     { selectedSituation && <SituationModal situationId={selectedSituation} onClose={handleClose} onOptionChosen={handleChooseOption} /> }
     </>  
   )
