@@ -32,13 +32,18 @@ const SituationModal = (props: Props) => {
       isOpen={situationId !== null}
       ariaHideApp={false}
       overlayClassName={"modal-overlay"}
-      className={"modal-content"}
+      className={`modal-content ${situationId}`}
       onRequestClose={() => handleClose()}
     >
       { situationId && (
         <>
-          <h1>{situation.header} </h1>
-          <div className="modal-close" onClick={() => handleClose()}></div>
+          <div className="header">
+            <h1>{situation.header} </h1>
+            <div className="modal-close" onClick={() => handleClose()}></div>
+          </div>
+          <div className="banner">
+
+          </div>
           <p>
               {situation.description}
           </p>

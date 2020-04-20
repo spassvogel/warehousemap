@@ -11,6 +11,8 @@
   border-radius: 8px;
   outline: none;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 
   animation: pop 0.5s ease-in-out 1, fadeub 1s linear;
 }
@@ -24,6 +26,25 @@
 @keyframes fadein {
     0% { opacity: 0; }  
     100% { opacity: 1; }
+}
+
+.modal-content .banner {
+  flex: 1;
+  max-height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-content.fire .banner {
+  background-image: url("/warehousemap/images/ui/banner/fire.jpg");
+}
+
+.modal-content.theft .banner {
+  background-image: url("/warehousemap/images/ui/banner/theft.jpg");
+}
+
+.modal-content.absenteeism .banner {
+  background-image: url("/warehousemap/images/ui/banner/empty-warehouse.jpg");
 }
 
 .modal-content .options {
@@ -105,6 +126,6 @@
   top: 16px;
   height: 32px;
   width: 32px;
-  background: url("/images/ui/close.png");
+  background: url("/warehousemap/images/ui/close.png");
   cursor: pointer;
 }
