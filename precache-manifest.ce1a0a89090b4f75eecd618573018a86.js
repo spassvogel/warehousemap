@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c209e75aa186637724a040a5270202d4",
+    "revision": "bf63ef9bbfabdb07594f939728afe747",
     "url": "/warehousemap/index.html"
   },
   {
-    "revision": "c6f01c4888072bf45e9d",
-    "url": "/warehousemap/static/css/main.cc7e383e.chunk.css"
+    "revision": "e034a7f36f1c9d5bb2bb",
+    "url": "/warehousemap/static/css/main.b3fa7044.chunk.css"
   },
   {
     "revision": "d92499c371776b932ce0",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/warehousemap/static/js/2.ad37171c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c6f01c4888072bf45e9d",
-    "url": "/warehousemap/static/js/main.e4fdd607.chunk.js"
+    "revision": "e034a7f36f1c9d5bb2bb",
+    "url": "/warehousemap/static/js/main.471629ac.chunk.js"
   },
   {
     "revision": "99d406c3f00d0660cb4b",
