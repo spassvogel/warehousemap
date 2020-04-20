@@ -59,7 +59,7 @@ const Marker = (props: Props & React.ComponentProps<typeof Sprite>) => {
             position={position}
             ref={ref}
             interactive={true}
-            image={`${process.env.PUBLIC_URL}/marker.svg`}
+            image={`${process.env.PUBLIC_URL}/images/ui/marker.svg`}
             mousedown={onDragStart}
             touchstart={onDragStart}
             mouseup={onDragEnd}

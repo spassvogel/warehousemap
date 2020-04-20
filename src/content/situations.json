@@ -1,0 +1,33 @@
+{
+  "fire": {
+    "header": "Fire hazard",
+    "description": "The warehouse is on fire",
+    "options": [
+      "Put out the fire",
+      "Call the fire brigade",
+      "Add some oil",
+      "Make an instagram story about it"
+    ]
+  },
+  "theft": {
+    "header": "Theft",
+    "description": "Goods are being stolen by employees",
+    "options": [
+      "Call the police",
+      "Interrogate the employees",
+      "Install security cameras",
+      "Replace employees with robots"
+    ]
+  },
+  "absenteeism": {
+    "header": "Absenteeism",
+    "description": "There is an abnormally high amount of absenteeism in the warehouse employees",
+    "options": [
+      "Hire private investigator",
+      "Ask HR to talk to employees",
+      "Allow people to work from home",
+      "Replace employees with robots"
+    ]
+  }
+}
+  

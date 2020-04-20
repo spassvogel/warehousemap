@@ -18,6 +18,7 @@
     "react": "^16.13.1",
     "react-animated-modal": "^1.1.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-modal": "^3.10.5",
     "gh-pages": "^2.2.0"
   }
 }
