@@ -15,7 +15,7 @@ const SituationModal = (props: Props) => {
   const { situationId, onClose, onOptionChosen } = props;
 
   const situation = (Situations as ISituations)[situationId];
-  const [selectedOption, selectOption] = useState<number | null>();
+  const [selectedOption, selectOption] = useState<number | null>(null);
   const [warningShown, setWarningShown] = useState<boolean>(false);
 
   const handleClose = () => {
