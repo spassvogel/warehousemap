@@ -33,10 +33,11 @@ function App() {
   useEffect(() => {
     // This will set the dimensions of the canvas to that of the window
     const resize = () => {
-        setCanvasWidth(window.innerWidth);
-        setCanvasHeight(window.innerHeight); 
+        setCanvasWidth(window.screen.width);
+        setCanvasHeight(window.screen.height); 
     }
     resize();
+
     window.addEventListener("resize", resize);
     return () => {
         window.removeEventListener("resize", resize);
