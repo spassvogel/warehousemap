@@ -8,7 +8,6 @@ import { PixiPlugin } from 'gsap/all';
 import { gsap } from 'gsap'
 import SituationModal from './components/SituationModal';
 import SituationOrder from './components/SituationOrder';
-
 import './App.css';
 
 PixiPlugin.registerPIXI(PIXI);
@@ -33,14 +32,16 @@ function App() {
   useEffect(() => {
     // This will set the dimensions of the canvas to that of the window
     const resize = () => {
-        setCanvasWidth(window.screen.width);
-        setCanvasHeight(window.screen.height); 
+      const width = Math.min(window.innerWidth, window.outerWidth);
+      const height = Math.min(window.innerHeight, window.outerHeight);
+      setCanvasWidth(width);
+      setCanvasHeight(height); 
     }
     resize();
 
     window.addEventListener("resize", resize);
     return () => {
-        window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", resize);
     };
   }, []);
 
