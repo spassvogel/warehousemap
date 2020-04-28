@@ -20,12 +20,14 @@ if (process.env.NODE_ENV === "development") {
 
 function App() {
   const viewportRef = useRef<PixiViewport>(null);
+  const forkliftRef = useRef<PIXI.Sprite>(null);
   const [selectedSituation, selectSituation] = useState<string | null>(null);
   const [situationOrder, setsituationOrder] = useState<string[]>([]);
 
-  const worldWidth = 1920;
-  const worldHeight = 1278;
-  
+  const worldWidth = 3588;
+  const worldHeight = 2388;
+  const scaleFactor = 1.86875; //scaled the original map up
+
   const [canvasWidth, setCanvasWidth] = useState(1200);
   const [canvasHeight, setCanvasHeight] = useState(600);
 
@@ -77,6 +79,42 @@ function App() {
     ])
   }
 
+  useEffect(() => {
+    // The forklift drives a square
+    const forklift = forkliftRef!.current!;
+    var tl = gsap.timeline({repeat: -1, repeatDelay: 1});
+    tl.to(forklift, {
+      pixi: { 
+        x: 1143 * scaleFactor,
+        y: 667 * scaleFactor
+      }, 
+      duration: 5
+    });
+    tl.to(forklift, {
+      pixi: { 
+        x: 1423 * scaleFactor,
+        y: 545 * scaleFactor
+      }, 
+      duration: 2
+    });
+    tl.to(forklift, {
+      pixi: { 
+        x: 750 * scaleFactor,
+        y: 347 * scaleFactor,
+      }, 
+      duration: 2
+    });
+    tl.to(forklift, {
+      onStart: () => { forklift.scale = new PIXI.Point(-1, 1) },
+      onComplete: () => { forklift.scale = new PIXI.Point(1, 1) },
+      pixi: { 
+        x: 477 * scaleFactor,
+        y: 510 * scaleFactor
+      }, 
+      duration: 2
+    });
+  }, []);
+
   const renderMarker = (situation: string, position: PIXI.Point, delay: number) => {
     if (situationOrder.some(s => s === situation)) {
       return null;
@@ -88,10 +126,11 @@ function App() {
     <>
       <Stage width={canvasWidth} height={canvasHeight} >
         <Viewport screenWidth={canvasWidth} screenHeight={canvasHeight} worldWidth={worldWidth} worldHeight={worldHeight} ref={viewportRef} >
-          <Sprite image={`${process.env.PUBLIC_URL}/map.png`}  interactive={true}/>
-          {renderMarker('fire', new PIXI.Point(440, 449), 0.5)}
-          {renderMarker('theft', new PIXI.Point(986, 724), 1)}
-          {renderMarker('absenteeism', new PIXI.Point(1437, 447), 1.5)}
+          <Sprite image={`${process.env.PUBLIC_URL}/images/map/map.jpg`}  />
+          <Sprite image={`${process.env.PUBLIC_URL}/images/map/forklift1.png`} x={477 * scaleFactor} y={510 * scaleFactor} ref={forkliftRef}/>
+          {renderMarker('fire', new PIXI.Point(440 * scaleFactor, 449 * scaleFactor), 0.5)}
+          {renderMarker('theft', new PIXI.Point(986 * scaleFactor, 724 * scaleFactor), 1)}
+          {renderMarker('absenteeism', new PIXI.Point(1437 * scaleFactor, 447 * scaleFactor), 1.5)}
       </Viewport>
     </Stage>
     <SituationOrder situationOrder={situationOrder} />

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Sprite, useApp } from '@inlet/react-pixi';
+import { Sprite } from '@inlet/react-pixi';
 import * as PIXI from 'pixi.js';
 import { PixiPlugin } from 'gsap/all';
 import { gsap } from 'gsap'
@@ -14,7 +14,6 @@ interface Props {
 
 const Marker = (props: Props & React.ComponentProps<typeof Sprite>) => {
     const ref = useRef<PIXI.Sprite>(null);
-    const app = useApp();
     const data = useRef<PIXI.interaction.InteractionData>();
     const [position, setPosition] = useState<PIXI.Point>(props.position || new PIXI.Point());
 
@@ -43,8 +42,7 @@ const Marker = (props: Props & React.ComponentProps<typeof Sprite>) => {
         console.log(position);
     }
     
-    function onDragMove()
-    {
+    const onDragMove = () => {
         if (data.current)
         {
             const newPosition = data.current.getLocalPosition(ref.current!.parent);
