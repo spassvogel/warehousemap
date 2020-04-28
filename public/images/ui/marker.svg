@@ -1,1 +1,16 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="38" height="47.31" viewBox="0 0 38 47.31"><defs><style>.cls-1{fill:#231f20;fill-opacity:0.5;}.cls-2{fill:#ef4136;}.cls-3{fill:#971b1e;}</style></defs><title>marker</title><path class="cls-1" d="M38,18.83A17.82,17.82,0,1,0,6,29.64H6L20.22,47.45,34.46,29.64h0A17.84,17.84,0,0,0,38,18.83Z" transform="translate(0 -0.14)"/><path class="cls-2" d="M36,18.1A18,18,0,1,0,3.66,29h0L18,47,32.42,29h0A18,18,0,0,0,36,18.1Z" transform="translate(0 -0.14)"/><path class="cls-3" d="M25.56,18.22a7.16,7.16,0,1,1-7.16-7.16h0A7.17,7.17,0,0,1,25.56,18.22Z" transform="translate(0 -0.14)"/></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px"
+	 height="94.66px" viewBox="0 0 76 94.66" style="enable-background:new 0 0 76 94.66;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#231F20;fill-opacity:0.5;}
+	.st1{fill:#EF4137;}
+	.st2{fill:#981C20;}
+</style>
+<defs>
+</defs>
+<path class="st0" d="M76,37.42C75.98,17.74,60.01,1.79,40.33,1.81S4.7,17.81,4.72,37.49C4.73,45.27,7.28,52.84,12,59.04l0,0
+	l28.44,35.62l28.48-35.62l0,0C73.58,52.8,76.06,45.21,76,37.42z"/>
+<path class="st1" d="M72,35.96C71.98,16.08,55.84-0.02,35.96,0S-0.02,16.16,0,36.04c0.01,7.84,2.58,15.47,7.32,21.72l0,0l28.68,36
+	l28.84-36l0,0C69.54,51.47,72.06,43.81,72,35.96z"/>
+<path class="st2" d="M51.12,36.2c0,7.91-6.41,14.32-14.32,14.32S22.48,44.11,22.48,36.2s6.41-14.32,14.32-14.32l0,0l0,0
+	C44.7,21.89,51.11,28.29,51.12,36.2z"/>
+</svg>
