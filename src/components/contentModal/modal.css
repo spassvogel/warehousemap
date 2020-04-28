@@ -1,0 +1,120 @@
+
+.modal-content {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 8px;
+  outline: none;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  animation: pop 0.5s ease-in-out 1, fadeub 1s linear;
+}
+
+
+@keyframes pop {
+    10% { transform: scale(0.25);}
+    50% { transform: scale(1);}
+}
+
+@keyframes fadein {
+    0% { opacity: 0; }  
+    100% { opacity: 1; }
+}
+
+.modal-content .banner {
+  flex: 1;
+  max-height: 300px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 32 px;
+}
+
+.modal-content .options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content .options li {
+  background: #009FE3;
+  display: block;
+  height: 32px;
+  color: white;
+  padding: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-content .options li .checkbox {
+  background: white;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.modal-content .options li .checkbox .check {
+  display: none;
+  width: 24px;
+  height: 24px;
+  margin: 4px;
+}
+
+.modal-content .options li.active {
+  background: #3FA535;
+}
+
+.modal-content .options li.active .checkbox .check {
+  display: inline;
+  stroke-dasharray: 640;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: draw-around 1s;
+}
+
+.modal-content .control {  
+  display: flex;
+}
+
+.modal-content .control .warning {
+  display: flex;
+  align-items: center;
+}
+
+.modal-content .control .warning span {
+}
+
+.modal-content .control button {
+  margin-right: 16px;
+}
+
+@keyframes draw-around {
+  0% {
+    stroke-dashoffset: 640;
+  }
+  10% {
+    stroke-dashoffset: 640;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.modal-close {
+  /* close button on the modal */
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  height: 32px;
+  width: 32px;
+  background: url("/warehousemap/images/ui/close.png");
+  cursor: pointer;
+}

@@ -6,11 +6,12 @@ import { Viewport as PixiViewport } from "pixi-viewport";
 import Marker from './components/pixi/Marker';
 import { PixiPlugin } from 'gsap/all';
 import { gsap } from 'gsap'
-import SituationModal from './components/SituationModal';
-import SituationOrder from './components/SituationOrder';
 import './App.css';
 import ParticleEmitter from './components/pixi/ParticleEmitter';
 import smoke from './smoke.json';
+import content from './content/parseContent';
+import { AnyContent } from './common/constants';
+import ContentModal from './components/contentModal';
 
 PixiPlugin.registerPIXI(PIXI);
 gsap.registerPlugin(PixiPlugin);
@@ -23,8 +24,7 @@ if (process.env.NODE_ENV === "development") {
 function App() {
   const viewportRef = useRef<PixiViewport>(null);
   const forkliftRef = useRef<PIXI.Sprite>(null);
-  const [selectedSituation, selectSituation] = useState<string | null>(null);
-  const [situationOrder, setsituationOrder] = useState<string[]>([]);
+  const [selectedContent, selectContent] = useState<AnyContent | null>(null);
 
   const worldWidth = 3588;
   const worldHeight = 2388;
@@ -59,27 +59,27 @@ function App() {
 
   useEffect(() => {
     // Blur the map when situation is selected
-    if (selectedSituation) {
+    if (selectedContent) {
       gsap.to(viewportRef.current, {duration: .5, pixi: {blur:20}});
     } else {
       gsap.to(viewportRef.current, {duration: .5, pixi: {blur:0}});
     }
-  }, [selectedSituation]);
+  }, [selectedContent]);
 
-  const handleMarkerClick = (situation: string) => {
-    selectSituation(situation);
+  const handleMarkerClick = (content: AnyContent) => {
+    selectContent(content);
   }
 
   const handleClose = () => {
-    selectSituation(null);
+    selectContent(null);
   }
 
-  const handleChooseOption = (option: number) => {
-    setsituationOrder([
-      ...situationOrder,
-      selectedSituation!
-    ])
-  }
+  // const handleChooseOption = (option: number) => {
+  //   setsituationOrder([
+  //     ...situationOrder,
+  //     selectedSituation!
+  //   ])
+  // }
 
   useEffect(() => {
     // The forklift drives a square
@@ -117,11 +117,19 @@ function App() {
     });
   }, []);
 
-  const renderMarker = (situation: string, position: PIXI.Point, delay: number) => {
-    if (situationOrder.some(s => s === situation)) {
-      return null;
-    }
-    return <Marker position={position} pointerdown={() => handleMarkerClick(situation)} delay={delay} />
+  // const renderMarker = (situation: string, position: PIXI.Point, delay: number) => {
+  //   if (situationOrder.some(s => s === situation)) {
+  //     return null;
+  //   }
+  //   return <Marker position={position} pointerdown={() => handleMarkerClick(situation)} delay={delay} />
+  // }
+  const renderMarker = (contentItem: AnyContent, delay: number) => {
+    const position = new PIXI.Point(contentItem.position[0], contentItem.position[1]);
+    return (
+      <Marker position={position} 
+        pointerdown={() => handleMarkerClick(contentItem)}
+        delay={delay} />
+    );
   }
 
   return (
@@ -132,9 +140,9 @@ function App() {
           <Sprite image={`${process.env.PUBLIC_URL}/images/map/forklift1.png`} x={477 * scaleFactor} y={510 * scaleFactor} ref={forkliftRef}>
       
           </Sprite>
-          {renderMarker('fire', new PIXI.Point(440 * scaleFactor, 449 * scaleFactor), 0.5)}
+          {/* {renderMarker('fire', new PIXI.Point(440 * scaleFactor, 449 * scaleFactor), 0.5)}
           {renderMarker('theft', new PIXI.Point(986 * scaleFactor, 724 * scaleFactor), 1)}
-          {renderMarker('absenteeism', new PIXI.Point(1437 * scaleFactor, 447 * scaleFactor), 1.5)}
+          {renderMarker('absenteeism', new PIXI.Point(1437 * scaleFactor, 447 * scaleFactor), 1.5)} */}
           <ParticleEmitter
               name="smoke"
               x={1931}
@@ -142,10 +150,11 @@ function App() {
               image={`${process.env.PUBLIC_URL}/images/map/smoke.png`} 
               config={smoke} 
             />
+          {content.map((contentItem, index) => renderMarker(contentItem, index * 0.5))}
         </Viewport>
       </Stage>
-      <SituationOrder situationOrder={situationOrder} />
-      { selectedSituation && <SituationModal situationId={selectedSituation} onClose={handleClose} onOptionChosen={handleChooseOption} /> }
+      {/* <SituationOrder situationOrder={situationOrder} /> */}
+      { selectedContent && <ContentModal content={selectedContent} onClose={handleClose} /> }
     </>  
   )
 };

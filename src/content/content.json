@@ -1,0 +1,31 @@
+[{
+  "position": [822, 839],
+  "type": "youtube",
+  "header": "Picking & Packing",
+  "content": {
+    "url": "https://www.youtube.com/watch?v=HW0uJefN8S0"
+  }
+}, {
+  "position": [1842, 839],
+  "type": "options",
+  "header": "Fire hazard",
+  "content": {
+    "description": "The warehouse is on fire. What do we do?",
+    "bannerImg": "images/ui/banner/fire.jpg",
+    "options": [
+      "Put out the fire",
+      "Call the fire brigade",
+      "Add some oil",
+      "Make an instagram story about it"
+    ],
+    "correctAnswers": [0]
+  }
+}, {
+  "position": [1947, 1223],
+  "type": "iframe",
+  "header": "Scan and store",
+  "content": {
+    "url": "https://21cceducation.nl/content/webgl/scan_store/",
+    "height": "600px"
+  }
+}]
