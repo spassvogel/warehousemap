@@ -9,6 +9,8 @@ import { gsap } from 'gsap'
 import SituationModal from './components/SituationModal';
 import SituationOrder from './components/SituationOrder';
 import './App.css';
+import ParticleEmitter from './components/pixi/ParticleEmitter';
+import smoke from './smoke.json';
 
 PixiPlugin.registerPIXI(PIXI);
 gsap.registerPlugin(PixiPlugin);
@@ -127,14 +129,23 @@ function App() {
       <Stage width={canvasWidth} height={canvasHeight} >
         <Viewport screenWidth={canvasWidth} screenHeight={canvasHeight} worldWidth={worldWidth} worldHeight={worldHeight} ref={viewportRef} >
           <Sprite image={`${process.env.PUBLIC_URL}/images/map/map.jpg`}  />
-          <Sprite image={`${process.env.PUBLIC_URL}/images/map/forklift1.png`} x={477 * scaleFactor} y={510 * scaleFactor} ref={forkliftRef}/>
+          <Sprite image={`${process.env.PUBLIC_URL}/images/map/forklift1.png`} x={477 * scaleFactor} y={510 * scaleFactor} ref={forkliftRef}>
+      
+          </Sprite>
           {renderMarker('fire', new PIXI.Point(440 * scaleFactor, 449 * scaleFactor), 0.5)}
           {renderMarker('theft', new PIXI.Point(986 * scaleFactor, 724 * scaleFactor), 1)}
           {renderMarker('absenteeism', new PIXI.Point(1437 * scaleFactor, 447 * scaleFactor), 1.5)}
-      </Viewport>
-    </Stage>
-    <SituationOrder situationOrder={situationOrder} />
-    { selectedSituation && <SituationModal situationId={selectedSituation} onClose={handleClose} onOptionChosen={handleChooseOption} /> }
+          <ParticleEmitter
+              name="smoke"
+              x={1931}
+              y={1293}
+              image={`${process.env.PUBLIC_URL}/images/map/smoke.png`} 
+              config={smoke} 
+            />
+        </Viewport>
+      </Stage>
+      <SituationOrder situationOrder={situationOrder} />
+      { selectedSituation && <SituationModal situationId={selectedSituation} onClose={handleClose} onOptionChosen={handleChooseOption} /> }
     </>  
   )
 };
